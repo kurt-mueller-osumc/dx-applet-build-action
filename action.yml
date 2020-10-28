@@ -1,12 +1,21 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: DNAnexus Applet Build Action
+description: Automates building a DNAnexus applet
+author: Kurt Mueller
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  api-token:
+    description: Your DNAnexus API Token
+    required: true
+  project:
+    description: The project name or id
+    required: true
+  force:
+    description: Override any existing applet
+    required: false
+    default: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.api-token }}
+    - ${{ inputs.project }}
+    - ${{ inputs.force }}

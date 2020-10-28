@@ -1,7 +1,11 @@
-FROM alpine:3.10
+FROM python:3.9-slim
 
-COPY LICENSE README.md /
+RUN pip3 install dxpy
 
-COPY entrypoint.sh /entrypoint.sh
+# COPY LICENSE README.md /
+
+# COPY entrypoint.sh /entrypoint.sh
+
+ADD . /
 
 ENTRYPOINT ["/entrypoint.sh"]
